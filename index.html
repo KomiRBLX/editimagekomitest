@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobreposição de Imagem em Lote</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="layout">
+  <aside id="painel">
+    <h1>Sobreposição em Lote</h1>
+
+    <h2>Preset</h2>
+    <div id="presets"></div>
+
+    <h2>Imagem do preset</h2>
+    <img id="ovPrev" alt="">
+    <div id="ovInfo"></div>
+    <div class="botoes esq">
+      <label class="btn mini" for="ovEntrada">Escolher imagem</label>
+      <button id="btnRemoverOv" class="mini sec" disabled>Remover</button>
+    </div>
+    <input type="file" id="ovEntrada" accept="image/*" hidden>
+
+    <h2>Ajustes do preset</h2>
+    <label>Modo
+      <select id="modo">
+        <option value="logo">Logo / marca d'água (tamanho e posição)</option>
+        <option value="cobrir">Cobrir a foto (mantém proporção, corta)</option>
+        <option value="esticar">Esticar sobre a foto</option>
+      </select>
+    </label>
+
+    <div id="opcoesLogo">
+      <label>Largura da imagem <output></output>
+        <input type="range" id="tamanho" min="2" max="100" step="1" data-un="% da foto">
+      </label>
+      <label>Âncora horizontal
+        <select id="ancoraH">
+          <option value="direita">Direita</option>
+          <option value="centro">Centro</option>
+          <option value="esquerda">Esquerda</option>
+        </select>
+      </label>
+      <label>Âncora vertical
+        <select id="ancoraV">
+          <option value="baixo">Baixo</option>
+          <option value="centro">Centro</option>
+          <option value="topo">Topo</option>
+        </select>
+      </label>
+      <label>Distância da lateral <output></output>
+        <input type="range" id="margemH" min="0" max="20" step="0.5" data-un="% da largura">
+      </label>
+      <label>Distância do rodapé/topo <output></output>
+        <input type="range" id="margemV" min="0" max="20" step="0.5" data-un="% da largura">
+      </label>
+    </div>
+
+    <label>Opacidade <output></output>
+      <input type="range" id="opacidade" min="0" max="100" step="1" data-un="%">
+    </label>
+
+    <button id="btnPadrao" class="sec">Restaurar padrão do preset</button>
+  </aside>
+
+  <main>
+    <div id="zona">
+      <p><strong>Arraste várias fotos aqui</strong> ou escolha os arquivos</p>
+      <div class="botoes">
+        <label class="btn sec" for="entrada">Escolher fotos</label>
+        <button id="btnZip" disabled>Baixar tudo (ZIP)</button>
+        <button id="btnLimpar" class="sec" disabled>Limpar</button>
+      </div>
+      <input type="file" id="entrada" accept="image/*" multiple hidden>
+    </div>
+    <div id="msg" role="status"></div>
+    <div id="grade"></div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
